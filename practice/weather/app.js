@@ -1,8 +1,30 @@
-var request = require("request");
+const yargs = require("yargs");
+const geocode = require("./geocode/geocode");
+const weather = require("./weather/weather");
 
-request({
-    url: "https://maps.googleapis.com/maps/api/geocode/json?address=siruseri",
-    json: true
-},(error, response, body) => {
-    console.log(body);
+const argv = yargs
+.option({
+    a:{
+        demand: true,
+        description: "Address to fetch",
+        alias: "address",
+        string: true
+    }
+})
+.help()
+.argv;
+
+geocode.geocodeAddress(argv.address, (errorMessage, results) => {
+    if (errorMessage) {
+        console.log(errorMessage);
+    } else {
+        console.log(results);
+        weather.getWeather(results.lat, results.long, (errorMesage, result) => {
+            if (errorMessage) {
+                console.log(errorMessage);
+            } else {
+                console.log(`Temperature: ${result}`);
+            }
+        });
+    }
 });
