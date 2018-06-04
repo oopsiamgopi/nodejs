@@ -3,7 +3,7 @@ const request = require("request");
 var geocodeAddress = (address, callback) => {
     var encodedAddress = encodeURIComponent(address);
     request({
-        url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=`,
+        url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyDpFoJrtJa3sauQfOoV4VRF4sSK5AUUPp8`,
         json: true
     },(error, response, body) => {
         // console.log(JSON.stringify(body, undefined, 2));

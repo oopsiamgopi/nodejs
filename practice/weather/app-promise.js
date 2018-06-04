@@ -13,7 +13,7 @@ const argv = yargs
 .argv;
 
 var encodedAddress = encodeURIComponent(argv.address);
-var geocodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=`
+var geocodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyDpFoJrtJa3sauQfOoV4VRF4sSK5AUUPp8`
 
 axios.get(geocodeURL)
 .then((response)=>{
@@ -23,7 +23,7 @@ axios.get(geocodeURL)
     console.log("Latitude: ", latitude);
     console.log("Longitude: ", longitude);
 
-    var weatherURL = `https://api.darksky.net/forecast//${latitude},${longitude}`;
+    var weatherURL = `https://api.darksky.net/forecast/afaf211030520b8ad0307578a7e92767/${latitude},${longitude}`;
     return axios.get(geocodeURL);
 })
 .then((response) => {
