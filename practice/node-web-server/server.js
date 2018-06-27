@@ -5,6 +5,7 @@ const fs = require("fs");
 var app = express();
 hbs.registerPartials(__dirname + "/views/partials");
 
+var port = process.env.PORT || 3000;
 /*app.use((req,res,next) => {
     res.render("maintanace.hbs", {});
 });
@@ -49,4 +50,6 @@ app.get("/about", (req, res) => {
     })
 });
 
-app.listen(3000);
+app.listen(port, () => {
+    console.log("Server is running");
+});
